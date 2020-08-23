@@ -24,7 +24,13 @@ const FbPost = (props) => {
                     textAlign: "left",
                     flexDirection:"column"
                 }}>
-                    <p style={{ fontWeight: "bold" }}>  {props.createdBy} </p>
+                    <p style={{ fontWeight: "bold" }}>  {props.createdBy} <span
+                        style={{color:"grey", fontSize:"15px",
+                        fontStyle:"normal"}}>
+                        {props.feeling}
+                        </span>
+                     </p> 
+                    
                     <p>  {props.createdAt} </p>
                 </div>
             </div>
