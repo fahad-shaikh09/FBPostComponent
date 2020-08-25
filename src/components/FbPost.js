@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ImageAvatars from "./ImageAvatars";
 import FbImageGrid from "react-fb-image-grid"
 import a from "./../images/a.jpg";
@@ -8,6 +8,7 @@ import d from "./../images/d.jpeg";
 import { HiOutlineThumbUp } from "react-icons/hi";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
+import Emojis from "./Emojis";
 
 
 const FbPost = (props) => {
@@ -17,6 +18,15 @@ const FbPost = (props) => {
         c,
         d
     ]
+
+    const [emojis,setEmojis] = useState(false);
+
+    function showEmoji(){
+        setEmojis(!emojis)
+        
+    }
+
+
     return (
         <div>
 
@@ -47,30 +57,35 @@ const FbPost = (props) => {
             <FbImageGrid images={images} countFrom={2} />
 
             <div style={{display:"flex",
-                        justifyContent:"space-evenly"
+                        justifyContent:"space-evenly",
+                        marginRight:"300px"
                     }}>
-                <div style={{display:"flex",
-                        width: "55px",
-                        justifyContent:"space-between"
-                        }}>
-                    <HiOutlineThumbUp size="25px" />
-                    <span> Like</span>
-                </div>
 
-                <div style={{display:"flex",
-                        width: "85px",
-                        justifyContent:"space-between"
-                        }}>
-                    <BiComment size="25px"/>
-                    <span>Comment</span>
-                </div>
 
                 <div style={{display:"flex",
                         width: "65px",
                         justifyContent:"space-between"
                         }}>
-                    <RiShareForwardLine size="25px"/>
-                    <span>Share</span>
+                    <HiOutlineThumbUp size="35px" />
+                    <button onClick={() => showEmoji()} > Like</button>
+                    <div style={{ position:"absolute",top:"380px", left:"380px"}}> {emojis ? <Emojis /> : ""}  </div>
+
+                </div>
+
+                <div style={{display:"flex",
+                        width: "95px",
+                        justifyContent:"space-between"
+                        }}>
+                    <BiComment size="35px"/>
+                    <button>Comment</button>
+                </div>
+
+                <div style={{display:"flex",
+                        width: "75px",
+                        justifyContent:"space-between"
+                        }}>
+                    <RiShareForwardLine size="35px"/>
+                    <button>Share</button>
                 </div>
             </div>
         </div>
