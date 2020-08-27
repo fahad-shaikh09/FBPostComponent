@@ -9,7 +9,7 @@ import { HiOutlineThumbUp } from "react-icons/hi";
 import { BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import Emojis from "./Emojis";
-
+import Comments from './Comments'
 
 const FbPost = (props) => {
     const images = [
@@ -20,12 +20,15 @@ const FbPost = (props) => {
     ]
 
     const [emojis,setEmojis] = useState(false);
+    const [comments,setComments] = useState(false)
 
     function showEmoji(){
         setEmojis(!emojis)
-        
     }
 
+    function showComments(){
+        setComments(!comments)
+    }
 
     return (
         <div>
@@ -56,12 +59,14 @@ const FbPost = (props) => {
 
             <FbImageGrid images={images} countFrom={2} />
 
+
+            {/* ----------------DIV FOR LIKE, COMMENT AND SHARE------------ */}
             <div style={{display:"flex",
                         justifyContent:"space-evenly",
                         marginRight:"300px"
                     }}>
 
-
+            {/* ----------------LIKE------------ */}
                 <div style={{display:"flex",
                         width: "65px",
                         justifyContent:"space-between"
@@ -72,14 +77,18 @@ const FbPost = (props) => {
 
                 </div>
 
+            {/* ----------------COMMENT------------ */}
                 <div style={{display:"flex",
                         width: "95px",
                         justifyContent:"space-between"
                         }}>
                     <BiComment size="35px"/>
-                    <button>Comment</button>
+                    <button onClick={() => showComments()} >Comment</button>
                 </div>
+                 <div style={{ position:"absolute",top:"450px",left:"380px"}}> {comments ? <Comments /> : ""}  </div>
 
+            
+            {/* ----------------SHARE------------ */}
                 <div style={{display:"flex",
                         width: "75px",
                         justifyContent:"space-between"

@@ -16,3 +16,6 @@ const Emojis = () => {
 }
 
 export default Emojis
+
+
+//https://www.npmjs.com/package/react-facebook-emoji
